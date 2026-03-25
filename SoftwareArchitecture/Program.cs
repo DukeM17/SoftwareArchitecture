@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using SoftwareArchitecture.Singleton;
+
+Logger.Instance.Log("test message");
+
+Logger.Instance.Log("test message2");
