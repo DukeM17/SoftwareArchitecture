@@ -1,5 +1,4 @@
-﻿using SoftwareArchitecture.Singleton;
+﻿using SoftwareArchitecture.Design_Patterns.Creational_Patterns.Factory;
 
-Logger.Instance.Log("test message");
-
-Logger.Instance.Log("test message2");
+var paymentProcessor = PaymentProcessorFactory.Create("creditcard");
+paymentProcessor.ProcessPayment(20.20m);

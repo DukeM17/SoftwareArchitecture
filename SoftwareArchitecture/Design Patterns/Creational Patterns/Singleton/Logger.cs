@@ -4,7 +4,7 @@
     {
         private Logger() { }
 
-        private static Logger _instance;
+        private static Logger? _instance;
         private static readonly object _lock = new();
 
         public static Logger Instance
