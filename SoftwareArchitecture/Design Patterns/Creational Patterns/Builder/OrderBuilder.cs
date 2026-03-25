@@ -20,6 +20,11 @@
 
         public Order Build() 
         {
+            if (string.IsNullOrWhiteSpace(_item))
+                throw new InvalidOperationException("Item is required.");
+            if (_quantity <= 0)
+                throw new InvalidOperationException("Quantity must be at least 1.");
+
             Order order = new Order()
             {
                 Item = _item,
@@ -29,7 +34,7 @@
                 Extras = _extras,
                 DeliveryTime = _deliveryTime,
                 ContactlessDelivery = _contactlessDelivery,
-            };
+            };            
 
             return order;            
         }

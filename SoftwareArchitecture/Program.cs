@@ -2,7 +2,7 @@
 
 var order = new OrderBuilder()
     .ForItem("pizza")
-    .ForQuantity(1)
+    .ForQuantity(0)
     .ForSize("large")
     .ForCrust("stuffed")
     .ForExtras("Dough balls")
