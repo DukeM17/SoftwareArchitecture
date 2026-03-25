@@ -1,4 +1,13 @@
-﻿using SoftwareArchitecture.Design_Patterns.Creational_Patterns.Factory;
+﻿using SoftwareArchitecture.Design_Patterns.Creational_Patterns.Builder;
 
-var paymentProcessor = PaymentProcessorFactory.Create("creditcard");
-paymentProcessor.ProcessPayment(20.20m);
+var order = new OrderBuilder()
+    .ForItem("pizza")
+    .ForQuantity(1)
+    .ForSize("large")
+    .ForCrust("stuffed")
+    .ForExtras("Dough balls")
+    .ForDeliveryTime("asap")
+    .ForContactlessDelivery(true)
+    .Build();
+
+Console.WriteLine(order.ToString());
