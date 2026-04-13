@@ -1,16 +1,19 @@
-﻿using SoftwareArchitecture.Design_Patterns.Creational_Patterns.ObjectPool;
+﻿using SoftwareArchitecture.Design_Patterns.Creational_Patterns.Clone;
 
-var pool = new ConnectionPool(maxSize: 3);
+var baseGoblin = new EnemyConfig
+{
+    Name = "Goblin",
+    Health = 100,
+    Damage = 15,
+    Abilities = ["sneak", "steal"],
+    Resistances = { ["poison"] = 50 }
+};
 
-var connection = pool.Rent();
-connection.ExecuteQuery("SELECT * FROM mydatabase");
-pool.Return(connection);
+var eliteGoblin = baseGoblin.DeepClone();
+eliteGoblin.Name = "Elite Goblin";
+eliteGoblin.Health = 250;
+eliteGoblin.Abilities.Add("rage"); // Doesn't affect baseGoblin
 
-var connection2 = pool.Rent(); // The same connection is reused here
-connection2.ExecuteQuery("SELECT * FROM mydatabase2");
-
-var connection3 = pool.Rent(); // A new connection is made here
-connection2.ExecuteQuery("SELECT * FROM mydatabase3");
-
-pool.Return(connection2);
-pool.Return(connection3);
+var bossGoblin = baseGoblin.DeepClone();
+bossGoblin.Name = "Goblin King";
+bossGoblin.Damage = 80;
