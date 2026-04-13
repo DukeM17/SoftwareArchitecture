@@ -1,10 +1,6 @@
-﻿
-using SoftwareArchitecture.Design_Patterns.Structural_Patterns.Adapter;
-var logMessage = "Order placed successfully";
+﻿using SoftwareArchitecture.Design_Patterns.Structural_Patterns.Facade;
 
-ILogger logger = new ThirdPartyLoggerAdapter();
-logger.Log(logMessage);
+var facade = new OrderFacade();
+var tracking = facade.PlaceOrder(42, "tok_visa", 29.99m, "user@example.com", 42);
 
-
-ILogger stdLogger = new Logger();
-stdLogger.Log(logMessage);
+Console.WriteLine(tracking);
