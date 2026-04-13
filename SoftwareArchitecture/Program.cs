@@ -1,19 +1,8 @@
-﻿using SoftwareArchitecture.Design_Patterns.Creational_Patterns.Clone;
+﻿using SoftwareArchitecture.Design_Patterns.Creational_Patterns.AbstractFactory;
 
-var baseGoblin = new EnemyConfig
-{
-    Name = "Goblin",
-    Health = 100,
-    Damage = 15,
-    Abilities = ["sneak", "steal"],
-    Resistances = { ["poison"] = 50 }
-};
+IUIFactory factory = Environment.OSVersion.Platform == PlatformID.Win32NT
+    ? new WindowsUIFactory()
+    : new MacUIFactory();
 
-var eliteGoblin = baseGoblin.DeepClone();
-eliteGoblin.Name = "Elite Goblin";
-eliteGoblin.Health = 250;
-eliteGoblin.Abilities.Add("rage"); // Doesn't affect baseGoblin
-
-var bossGoblin = baseGoblin.DeepClone();
-bossGoblin.Name = "Goblin King";
-bossGoblin.Damage = 80;
+var loginForm = new Login(factory);
+loginForm.RenderForm();
