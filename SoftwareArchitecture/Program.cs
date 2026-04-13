@@ -1,8 +1,9 @@
-﻿using SoftwareArchitecture.Design_Patterns.Creational_Patterns.AbstractFactory;
+﻿
+using SoftwareArchitecture.Design_Patterns.Structural_Patterns.Adapter;
 
-IUIFactory factory = Environment.OSVersion.Platform == PlatformID.Win32NT
-    ? new WindowsUIFactory()
-    : new MacUIFactory();
+ILogger logger = new ThirdPartyLoggerAdapter();
+logger.Log("test");
 
-var loginForm = new Login(factory);
-loginForm.RenderForm();
+
+ILogger stdLogger = new Logger();
+stdLogger.Log("test");
